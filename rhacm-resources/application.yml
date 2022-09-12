@@ -24,7 +24,7 @@ spec:
       status: "True"
   clusterSelector:
     matchLabels:
-      environment: dev
+      name: punemgmt
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
@@ -37,6 +37,15 @@ metadata:
     apps.open-cluster-management.io/github-path: mariadb-resources
 spec:
   channel: mariadb/mariadb-app
+    config:
+    env:
+    - name: HTTP_PROXY
+      value: 'http://10.68.248.34:80'
+    - name: HTTPS_PROXY
+      value: 'http://10.68.248.34:80'
+    - name: NO_PROXY
+      value: >-
+        localhost,bastion.mgmt.infyitapps.local,bastion.cloud.infyitapps.local,api.mgmt.infyitapps.local,api.cloud.infyitapps.local,10.174.114.72,10.174.114.73,10.174.114.74,10.174.114.75,10.174.114.76,quay-registry-quay-quay-registry.apps.mgmt.infyitapps.local,api.mgmt.infyitapps.local,api-int.mgmt.infyitapps.local,api-int.cloud.infyitapps.local,.mgmt.infyitapps.local,.cloud.infyitapps.local,.infyitapps.local,.svc.cluster.local,.svc,.apps.mgmt.infyitapps.local,.apps.cloud.infyitapps.local,central-stackrox.apps.mgmt.infyitapps.local,console-openshift-console.apps.mgmt.infyitapps.local,console-openshift-console.apps.cloud.infyitapps.local,172.30.0.0/16,10.128.0.0/14,10.174.114.64/26,10.174.210.0/23
   placement:
     placementRef:
       kind: PlacementRule
