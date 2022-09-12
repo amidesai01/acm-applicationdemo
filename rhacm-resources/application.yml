@@ -37,7 +37,7 @@ metadata:
     apps.open-cluster-management.io/github-path: mariadb-resources
 spec:
   channel: mariadb/mariadb-app
-    config:
+  config:
     env:
     - name: HTTP_PROXY
       value: 'http://10.68.248.34:80'
