@@ -24,7 +24,7 @@ spec:
       status: "True"
   clusterSelector:
     matchLabels:
-      name: punemgmt
+      name: local-cluster
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
